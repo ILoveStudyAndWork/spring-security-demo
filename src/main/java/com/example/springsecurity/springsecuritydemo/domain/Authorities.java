@@ -1,5 +1,7 @@
 package com.example.springsecurity.springsecuritydemo.domain;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.Entity;
@@ -9,36 +11,28 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
+@Setter
+@Getter
 public class Authorities implements GrantedAuthority {
-    private static final long serialVersionUID = -8123526131047887755L;
-    private Long id;
+    private static final long serialVersionUID = 5714174142238190816L;
+    private long id;
     private String authority;
     private User user;
-
-    @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    @Override
-    public String getAuthority() {
-        return authority;
-    }
-
-    public void setAuthority(String authority) {
-        this.authority = authority;
-    }
 
     @ManyToOne
     public User getUser() {
         return user;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    // if use @Getter of lombok
+    // the getId must write manually with @Id and @GeneratedValue
+    // without those two annotation at the top of the getter function
+    // the getter would be override by lombok
+    // then the two annotation would disappear
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public long getId() {
+        return id;
     }
 }
