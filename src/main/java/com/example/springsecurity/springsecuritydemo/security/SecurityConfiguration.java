@@ -1,6 +1,5 @@
 package com.example.springsecurity.springsecuritydemo.security;
 
-import com.example.springsecurity.springsecuritydemo.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -40,7 +39,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and().formLogin()
                 .loginPage("/login")
                 .defaultSuccessUrl("/dashboard")
-                .permitAll();
+                .permitAll()
+                .and()
+                .sessionManagement()
+                .maximumSessions(1);
 
 
         // 如果不加and后面这一串的话，就会有一个死循环，

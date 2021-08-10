@@ -1,8 +1,9 @@
 package com.example.springsecurity.springsecuritydemo.security;
 
 import com.example.springsecurity.springsecuritydemo.domain.User;
+import lombok.EqualsAndHashCode;
 import org.springframework.security.core.userdetails.UserDetails;
-
+@EqualsAndHashCode
 public class CustomSecurityUser extends User implements UserDetails {
     private static final long serialVersionUID = 4658959202043446281L;
 
