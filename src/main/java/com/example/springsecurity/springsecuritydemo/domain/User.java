@@ -27,7 +27,7 @@ public class User {
         return id;
     }
     
-    @OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="user")
+    @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL, mappedBy="user")
     public Set<Authorities> getAuthorities() {
         return authorities;
     }
